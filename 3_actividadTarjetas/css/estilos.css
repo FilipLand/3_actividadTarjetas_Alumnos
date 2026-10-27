@@ -1,0 +1,74 @@
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f2f4f7;
+    color: #222;
+}
+
+header {
+    background-color: #263b50;
+    color: white;
+    text-align: center;
+    padding: 25px;
+}
+
+main {
+    max-width: 850px;
+    margin: 25px auto;
+    padding: 0 15px;
+}
+
+.resumen,
+.controles {
+    background-color: white;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+}
+
+button {
+    padding: 10px 15px;
+    border: 1px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.lista-tareas {
+    display: grid;
+    gap: 12px;
+}
+
+.tarea {
+    background-color: white;
+    padding: 18px;
+    border-radius: 8px;
+    border-left: 5px solid #477da8;
+}
+
+.tarea h2 {
+    margin-top: 0;
+}
+
+.tarea.completada {
+    opacity: 0.65;
+    border-left-color: #388e3c;
+}
+
+.tarea.completada h2 {
+    text-decoration: line-through;
+}
+
+.tarea.compleja {
+    border-left-color: #c98227;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    color: #666;
+}

@@ -1,0 +1,348 @@
+PRÁCTICA DE JAVASCRIPT: MIS 9 TAREAS
+======================================
+
+1. OBJETIVO DEL PROYECTO
+    ------------------------
+    Desarrolla una pequeña aplicación web para organizar tareas y controlar el progreso de su realización.
+
+    La aplicación utilizará HTML, CSS y JavaScript, sin servidor ni base de datos.
+
+    Practicarás la manipulación del DOM, las funciones, los eventos, los arrays, las condiciones 
+    y el almacenamiento local del navegador.
+
+    No se trata únicamente de conseguir que funcione: debes comprender qué hace cada función 
+    y por qué es necesaria.
+
+2. ARCHIVOS DEL PROYECTO
+    ------------------------
+    El proyecto tendrá tres archivos principales:
+    - index.html: estructura de la página.
+    - estilos.css: presentación de la página.
+    - app.js: datos, funciones y comportamiento.
+
+    El HTML y el CSS iniciales serán proporcionados por el profesor. El trabajo principal se realizará 
+    en JavaScript, aunque algunas tareas requerirán pequeñas modificaciones en HTML o CSS.
+
+    Importante: trabaja sobre el código existente. No sustituyas todo el archivo cada vez que añadas 
+    una funcionalidad.
+
+TAREA 1. CREAR LOS DATOS DE LAS TAREAS
+    --------------------------------------
+    Enunciado:
+    Crea un array llamado tareas que contenga nueve objetos. Cada objeto representará una tarea 
+    de la aplicación.
+
+    Cada tarea debe tener cuatro propiedades:
+    - id: identificador numérico único.
+    - titulo: título de la tarea.
+    - descripcion: explicación breve de la tarea.
+    - compleja: valor booleano que indique si la tarea es compleja.
+
+    Los identificadores irán del 1 al 9. Las seis primeras tareas serán sencillas y las tres 
+    últimas se marcarán como complejas.
+
+    Pistas:
+    - Utiliza un array para almacenar varios elementos.
+    - Cada tarea será un objeto con sus propias propiedades.
+    - Los valores booleanos son true y false, sin comillas.
+
+    Comprobación:
+    - El array contiene nueve tareas.
+    - No hay identificadores repetidos.
+    - Puedes consultar el título de una tarea utilizando su posición en el array.
+
+TAREA 2. MOSTRAR LAS TAREAS EN LA PÁGINA
+    ----------------------------------------
+    Enunciado:
+    Consigue que las nueve tareas aparezcan automáticamente en la página cuando se cargue la aplicación.
+
+    Cada tarea debe mostrarse en una tarjeta con su título y descripción.
+
+    Crea una función llamada crearTarjeta(tarea) que reciba un objeto y construya el elemento HTML 
+    correspondiente.
+
+    La función debe devolver la tarjeta creada. Después, recorre el array de tareas para insertar
+    todas las tarjetas en el contenedor de la página.
+
+    Pistas:
+    - document.createElement() permite crear elementos HTML.
+    - textContent permite establecer el texto de un elemento.
+    - append() permite insertar elementos dentro de otros.
+    - Un bucle for...of permite recorrer el array.
+    - Una función puede devolver un elemento mediante return.
+
+    Comprobación:
+    - Aparecen nueve tarjetas.
+    - Cada tarjeta muestra el título y la descripción correctos.
+    - No has escrito manualmente las nueve tarjetas en el HTML.
+
+TAREA 3. AÑADIR EL BOTÓN «COMPLETAR»
+    ------------------------------------
+    Enunciado:
+    Cada tarjeta debe incorporar un botón llamado «Completar».
+
+    Cuando el usuario pulse el botón, la tarjeta debe cambiar visualmente para indicar que la tarea
+    ha terminado y el texto del botón debe pasar a ser «Completada».
+
+    La tarjeta deberá utilizar la clase CSS completada para representar ese estado.
+
+    Pistas:
+    - Crea el botón con document.createElement().
+    - Utiliza addEventListener() para responder al evento click.
+    - classList.add() permite añadir una clase CSS.
+    - Modifica el texto del botón mediante textContent.
+
+    Comprobación:
+    - Todas las tarjetas tienen su propio botón.
+    - Al pulsar un botón, cambia únicamente su tarjeta.
+    - Las demás tarjetas no cambian de estado.
+
+TAREA 4. CREAR EL CONTADOR DE TAREAS COMPLETADAS
+    ------------------------------------------------
+    Enunciado:
+    Añade un contador que muestre cuántas tareas están completadas de las nueve disponibles.
+
+    Crea una función actualizarContador() que actualice el texto del contador.
+
+    Crea también una función completarTarea(tarea) que registre el identificador de la tarea completada.
+
+    El contador debe actualizarse cada vez que se complete una nueva tarea.
+
+    Pistas:
+    - Utiliza un array llamado tareasCompletadas para guardar los identificadores.
+    - La propiedad length permite conocer el número de elementos de un array.
+    - push() añade un elemento al array.
+    - includes() permite comprobar si un elemento ya está presente.
+    - Evita registrar varias veces el mismo identificador.
+
+    Comprobación:
+    - Inicialmente, el contador muestra cero tareas completadas.
+    - Al completar tres tareas diferentes, muestra 3 de 9.
+    - Completar una tarea no debe aumentar el contador varias veces.
+
+TAREA 5. DESACTIVAR LOS BOTONES DE LAS TAREAS COMPLETADAS
+    ---------------------------------------------------------
+    Enunciado:
+    Cuando una tarea se complete, su botón debe quedar desactivado para impedir que el usuario
+    vuelva a pulsarlo.
+
+    El aspecto visual de la tarjeta debe seguir indicando que está completada.
+
+    Pistas:
+    - Los botones HTML tienen una propiedad llamada disabled.
+    - Puedes establecerla a true o a false.
+    - Desactivar un botón y añadir una clase CSS son operaciones diferentes.
+
+    Comprobación:
+    - El botón de una tarea completada deja de responder.
+    - Las tareas pendientes siguen teniendo sus botones habilitados.
+    - El contador no aumenta por volver a pulsar una tarea completada.
+
+TAREA 6. FILTRAR LAS TAREAS COMPLEJAS
+    -------------------------------------
+    Enunciado:
+    El botón «Ocultar tareas complejas» debe permitir ocultar las tareas marcadas como complejas.
+
+    Cuando se vuelva a pulsar, esas tareas deben reaparecer.
+
+    El texto del botón debe cambiar según el estado del filtro.
+
+    Las tareas ocultas no deben eliminarse del array ni perder su estado de completadas.
+
+    Pistas:
+    - Utiliza una variable booleana llamada filtroActivo.
+    - El operador ! permite invertir un valor booleano.
+    - La propiedad hidden permite ocultar temporalmente un elemento.
+    - Puedes consultar una tarjeta mediante querySelector().
+    - El atributo personalizado data-id permite relacionar cada tarjeta con su tarea.
+
+    Comprobación:
+    - El filtro oculta las tres tareas complejas.
+    - El segundo clic vuelve a mostrarlas.
+    - Las tarjetas completadas siguen apareciendo como completadas cuando se desactiva el filtro.
+    - El contador no cambia al filtrar.
+
+TAREA 7. GUARDAR EL PROGRESO
+    -----------------------------
+    Enunciado:
+    Si se recarga la página, el progreso de las tareas completadas debe conservarse.
+
+    Modifica la aplicación para guardar los identificadores de las tareas completadas en 
+    el almacenamiento local del navegador mediante localStorage.
+
+    Cada vez que se complete una tarea, debe actualizarse el progreso guardado.
+
+    Pistas:
+    - localStorage.setItem() guarda un valor asociado a una clave.
+    - localStorage almacena cadenas de texto.
+    - JSON.stringify() permite convertir un array en texto JSON.
+    - Utiliza la clave "progreso" para guardar los identificadores.
+
+    Comprobación:
+    - Completa varias tareas y recarga la página.
+    - Comprueba que los datos siguen almacenados.
+    - Inspecciona el valor de la clave "progreso" desde las herramientas de desarrollo del navegador.
+
+TAREA 8. RECUPERAR EL PROGRESO AL RECARGAR
+    ------------------------------------------
+    Enunciado:
+    Al iniciar la aplicación, recupera los identificadores guardados y reconstruye el estado 
+    de las tarjetas.
+
+    Si una tarea estaba completada antes de recargar, deberá seguir apareciendo como completada.
+
+    El contador también debe reflejar el número de tareas recuperadas.
+
+    Pistas:
+    - localStorage.getItem() permite recuperar el valor guardado.
+    - Si la clave no existe, el resultado es null.
+    - JSON.parse() permite convertir el texto JSON en un array de JavaScript.
+    - Utiliza includes() para comprobar si una tarea está completada.
+    - La función crearTarjeta(tarea) puede consultar el estado de la tarea antes de devolver la tarjeta.
+    - Llama a la función de actualización del contador al iniciar la aplicación.
+
+    Comprobación:
+    - Las tarjetas completadas conservan su aspecto.
+    - Sus botones siguen desactivados.
+    - El contador coincide con el número de tareas completadas.
+    - El filtro sigue funcionando después de recargar.
+
+TAREA 9. REINICIAR EL PROGRESO
+    -------------------------------
+    Enunciado:
+    Añade un botón llamado «Reiniciar progreso».
+
+    Al pulsarlo, la aplicación debe volver al estado inicial:
+    - Todas las tareas quedarán pendientes.
+    - Los botones volverán a mostrar «Completar» y estarán habilitados.
+    - Se eliminará el progreso guardado.
+    - El contador volverá a cero.
+
+    El filtro debe conservar su funcionamiento.
+
+    Pistas:
+    - Utiliza addEventListener() para asociar el botón con una función reiniciarProgreso().
+    - splice(0) permite vaciar el array existente.
+    - localStorage.removeItem() elimina una clave concreta.
+    - classList.remove() permite quitar una clase CSS.
+    - Puedes recorrer las tareas para restaurar cada tarjeta.
+    - Actualiza el contador al finalizar.
+
+    Comprobación:
+    - Completa varias tareas y reinicia el progreso.
+    - Todas las tarjetas vuelven a su estado inicial.
+    - Recarga la página y verifica que las tareas siguen pendientes.
+    - No se elimina información ajena a la clave "progreso".
+
+TAREA 10. CONFIRMAR ANTES DE REINICIAR
+    --------------------------------------
+    Enunciado:
+    Evita que el usuario borre accidentalmente su progreso.
+
+    Antes de ejecutar el reinicio, muestra una ventana de confirmación que pregunte si desea continuar.
+
+    Si el usuario cancela, no debe cambiar ningún dato ni el aspecto de las tarjetas.
+
+    Si acepta, se ejecutará el reinicio de la tarea anterior.
+
+    Pistas:
+    - La función confirm() muestra una pregunta y devuelve un valor booleano.
+    - true representa la aceptación y false la cancelación.
+    - Una condición if permite decidir qué hacer según la respuesta.
+    - return permite salir de la función antes de ejecutar el resto del código.
+
+    Comprobación:
+    - Al cancelar, el progreso permanece intacto.
+    - Al aceptar, el progreso se reinicia correctamente.
+    - No es necesario duplicar la función de reinicio.
+
+TAREA 11. AÑADIR UNA BARRA DE PROGRESO
+    --------------------------------------
+    Enunciado:
+    Mejora la interfaz añadiendo una barra que represente visualmente el avance del usuario.
+
+    La barra deberá mostrar el progreso entre cero y nueve tareas completadas. Debajo, muestra 
+    el porcentaje correspondiente.
+
+    Por ejemplo, si se han completado cuatro tareas, el porcentaje será aproximadamente del 44 %.
+
+    La barra y el porcentaje deben actualizarse automáticamente cuando se complete una tarea,
+    se recupere el progreso o se reinicie la aplicación.
+
+    HTML proporcionado:
+    Añade estos elementos dentro de la sección resumen de index.html, junto al contador:
+
+    <section class="resumen">
+        <p id="contador">Tareas completadas: 0 de 9</p>
+        <progress id="barra-progreso" value="0" max="9"></progress>
+        <p id="porcentaje">0 % completado</p>
+    </section>
+
+    CSS proporcionado:
+    Añade estas reglas al final de estilos.css:
+
+    #barra-progreso {
+        width: 100%;
+        height: 22px;
+        accent-color: #388e3c;
+    }
+
+    #porcentaje {
+        text-align: center;
+        font-weight: bold;
+        margin-bottom: 0;
+    }
+
+    Tu trabajo en JavaScript:
+    - Obtener referencias a la barra y al porcentaje mediante document.querySelector().
+    - Modificar actualizarContador() para actualizar también ambos elementos.
+    - Calcular el porcentaje de tareas completadas.
+    - Comprobar que la barra se actualiza al completar tareas, recuperar el progreso guardado y reiniciar.
+
+    Pistas:
+    - HTML dispone del elemento <progress>.
+    - Sus atributos value y max permiten representar el avance.
+    - El porcentaje se calcula dividiendo las tareas completadas entre el total y multiplicando por 100.
+    - Math.round() permite redondear el resultado al entero más próximo.
+    - Amplía la función actualizarContador() para actualizar también la barra y el porcentaje.
+
+    Comprobación:
+    - Cero tareas completadas equivale al 0 %.
+    - Nueve tareas completadas equivalen al 100 %.
+    - Cuatro tareas completadas equivalen aproximadamente al 44 %.
+    - La barra refleja el progreso recuperado al recargar y vuelve a cero al reiniciar.
+
+REQUISITOS GENERALES DE ENTREGA
+    -------------------------------
+    La aplicación final deberá cumplir los siguientes requisitos:
+    - Las nueve tareas se generan dinámicamente desde el array.
+    - El contador, el filtro y los botones funcionan correctamente.
+    - El progreso se conserva al recargar la página.
+    - El reinicio requiere confirmación y elimina únicamente el progreso de la aplicación.
+    - La barra representa correctamente el avance.
+    - El código está organizado en funciones con responsabilidades claras.
+    - No existen errores en la consola del navegador.
+
+FORMA DE TRABAJO
+    ----------------
+    Se recomienda trabajar de forma incremental:
+    1. Completa una tarea.
+    2. Comprueba su funcionamiento.
+    3. Corrige los posibles errores.
+    4. Guarda los cambios en Git mediante un commit.
+    5. Continúa con la siguiente tarea.
+
+    No es necesario resolver todas las actividades de una sola vez. Si una tarea no funciona,
+    revisa primero la consola del navegador y comprueba las funciones relacionadas.
+
+CRITERIOS DE EVALUACIÓN
+    -----------------------
+    Se valorará:
+    - Funcionamiento: las funcionalidades solicitadas cumplen los requisitos.
+    - Comprensión: el alumno puede explicar las funciones principales y el flujo de ejecución.
+    - Organización: el código está estructurado y evita duplicaciones innecesarias.
+    - Pruebas: se comprueban los casos normales y los casos límite.
+    - Autonomía: el alumno utiliza las pistas para resolver problemas sin limitarse a copiar código.
+
+    El profesor podrá solicitar al alumno que explique una función, prediga el resultado de una instrucción
+    o realice una pequeña modificación durante la revisión del proyecto.
